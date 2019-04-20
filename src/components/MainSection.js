@@ -1,11 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import ResultCard from './ResultCard'
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
 `
 
 const StyledMainButton = styled.button`
@@ -19,16 +26,20 @@ const StyledMainButton = styled.button`
 `
 
 const StyledOptions = styled.div`
-  font-size: 1.25rem;
-  margin-top: 0.75rem;
+  font-size: 1.4rem;
+  margin-top: 1.25rem;
+  cursor: pointer;
 `
 
 const MainSection = () => {
   return (
-    <Wrapper>
-      <StyledMainButton>Give Me<br />Best Portfolio</StyledMainButton>
-      <StyledOptions>with options</StyledOptions>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <StyledMainButton>Give Me<br />Best Portfolio</StyledMainButton>
+        <StyledOptions>with options</StyledOptions>
+      </Wrapper>
+      <ResultCard />
+    </>
   )
 }
 

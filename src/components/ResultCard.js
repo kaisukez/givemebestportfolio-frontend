@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import TwoColumnData from './TwoColumnData'
+import WhatToBuyTable from './WhatToBuyTable'
+import PerformanceTable from './PerformanceTable'
 
 import { breakpoints } from '../constant'
 
@@ -92,13 +93,19 @@ const whatToBuyMockupData = [
 ]
 
 const performanceMockupData = [
-  ['Return / Year', 0.25],
-  ['Daily Return Std.', 0.13],
-  ['Shrape Ratio', 1.38]
+  ['Return / Year', 0.2514],
+  ['Daily Return Std.', 0.1374],
+  ['Shrape Ratio', 1.3894]
+]
+
+const nasdaqMockupData = [
+  ['Return / Year', 0.1057],
+  ['Daily Return Std.', 0.2442],
+  ['Shrape Ratio', 0.5578]
 ]
 
 const optionsMockupData = {
-  tickers: 'all',
+  tickers: 'All',
   risk_factor: 0.5,
   risk_free_rate: 0.025,
   years: 5
@@ -110,8 +117,15 @@ const ResultCard = () => {
     <StyledResultCard>
         <WhatToBuyHeader>What to buy</WhatToBuyHeader>
         <PerformanceHeader>Performance last {years} years</PerformanceHeader>
-        <WhatToBuyContent><TwoColumnData data={whatToBuyMockupData} /></WhatToBuyContent>
-        <PerformanceContent><TwoColumnData data={performanceMockupData} /></PerformanceContent>
+        <WhatToBuyContent>
+          <WhatToBuyTable data={whatToBuyMockupData} />
+        </WhatToBuyContent>
+        <PerformanceContent>
+          <PerformanceTable
+            data={performanceMockupData}
+            nasdaqData={nasdaqMockupData}
+          />
+        </PerformanceContent>
       <StyledOptions>
         <StyledOption>Tickers : {tickers}</StyledOption>
         <StyledOption>Risk factor : {risk_factor}</StyledOption> 

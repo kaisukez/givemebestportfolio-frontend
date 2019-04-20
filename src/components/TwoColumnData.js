@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledTwoColumnData = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto auto;
 `
 
-const StyledRow = styled.div`
-  display: flex;
+const Value = styled.div`
+  padding: 1em;
 `
 
 const TwoColumnData = props => {
@@ -16,7 +16,10 @@ const TwoColumnData = props => {
     <StyledTwoColumnData>
       {data.map(row => {
         return(
-          <StyledRow>{row}</StyledRow>
+          <>
+            <Value>{row[0]}</Value>
+            <Value>{row[1]}</Value>
+          </>
         )
       })}
     </StyledTwoColumnData>

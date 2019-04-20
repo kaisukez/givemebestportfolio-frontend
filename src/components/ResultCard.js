@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import TwoColumnData from './TwoColumnData'
+
 const StyledResultCard = styled.div`
   display: grid;
   width: auto;
@@ -28,17 +30,40 @@ const StyledOptions = styled.div`
   }
 `
 
+const whatToBuyMockupData = [
+  ['ABC', 0.4],
+  ['DEF', 0.3],
+  ['GHI', 0.15],
+  ['JKL', 0.07]
+]
+
+const performanceMockupData = [
+  ['Return / Year', 0.25],
+  ['Daily Return Std.', 0.13],
+  ['Shrape Ratio', 1.38]
+]
+
+const optionsMockupData = {
+  tickers: 'all',
+  risk_factor: 0.5,
+  risk_free_rate: 0.025,
+  years: 5
+}
+
 const ResultCard = () => {
+  const { tickers, risk_factor, risk_free_rate, years } = optionsMockupData
   return (
     <StyledResultCard>
       <StyledWhatToBuy>
         What to buy
+        <TwoColumnData data={whatToBuyMockupData} />
       </StyledWhatToBuy>
       <StyledPerformance>
-        Performance last 5 years
+        Performance last {years} years
+        <TwoColumnData data={performanceMockupData} />
       </StyledPerformance>
       <StyledOptions>
-        tickers All | risk factor 0.5 | risk free rate 2.5%
+        tickers {tickers} | risk factor {risk_factor} | risk free rate {risk_free_rate * 100}%
       </StyledOptions>
     </StyledResultCard>
   )

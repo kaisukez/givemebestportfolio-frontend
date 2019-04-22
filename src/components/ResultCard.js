@@ -18,11 +18,11 @@ const StyledResultCard = styled.div`
   /* display: ${props => props.show ? 'grid' : 'none'}; */
 
   clip-path: ${ props => props.show ?
-    'circle(120% at top 50vh left 50vw)' :
+    'circle(125% at top 50vh left 50vw)' :
     'circle(0% at top 50vh left 50vw)'
   };
 
-  transition: clip-path 0.5s ease-in;
+  transition: clip-path 0.4s ease-in;
   
   @media (min-width: ${breakpoints.mobile}px) {
     grid-template-rows: auto auto auto;

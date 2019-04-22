@@ -122,8 +122,8 @@ const OptionSection = () => {
 
   const onCloseResult = () => {
     setShowResult(false)
-    setTimeout(() => setData(skeletonData), 500)
-    setTimeout(() => setShowWrapper(true), 500)
+    setTimeout(() => setData(skeletonData), 400)
+    setTimeout(() => setShowWrapper(true), 400)
   }
 
   return (

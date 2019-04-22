@@ -13,6 +13,7 @@ const StyledResultCard = styled.div`
   width: auto;
   height: auto;
   font-size: 1.1rem;
+  min-height: 100vh;
 
   /* display: ${props => props.show ? 'grid' : 'none'}; */
 
@@ -135,8 +136,9 @@ const optionsMockupData = {
 const renderTickers = tickers => {
   if (tickers === 'All')
     return tickers
+  
   let result = '['
-  tickers.forEach((ticker, i) => {
+  tickers.sort().forEach((ticker, i) => {
     result += ticker
     if (i < tickers.length - 1)
       result += ', '

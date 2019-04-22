@@ -8,6 +8,6 @@ const tickers = ['AAL', 'AAPL', 'ADBE', 'ADI', 'ADP', 'ADSK', 'ALGN', 'ALXN', 'A
         'MU', 'MXIM', 'MYL', 'NFLX', 'NTAP', 'NTES', 'NVDA', 'ORLY', 'PAYX',
         'PCAR', 'PEP', 'QCOM', 'REGN', 'ROST', 'SBUX', 'SIRI', 'SNPS', 'SWKS',
         'SYMC', 'TMUS', 'TTWO', 'TXN', 'UAL', 'ULTA', 'VRSK', 'VRSN', 'VRTX',
-        'WBA', 'WDC', 'WLTW', 'WYNN', 'XEL', 'XLNX', '^NDX']
+        'WBA', 'WDC', 'WLTW', 'WYNN', 'XEL', 'XLNX']
 
 export default tickers

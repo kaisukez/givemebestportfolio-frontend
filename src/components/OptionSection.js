@@ -114,8 +114,8 @@ const OptionSection = () => {
     
     setLoading(true)
     const result = await requestForData(options)
-    setData(result)
     setLoading(false)
+    setData(result)
     // console.log(result)
     setShowWrapper(false)
     setShowResult(true)
@@ -151,10 +151,10 @@ const OptionSection = () => {
               min={0}
               max={1}
               precision={3}
-              step={0.001}
+              step={0.1}
             />
           </Form.Item>
-          <Form.Item label={`Risk Free Rate (0.0 - 100.0) : `}>
+          <Form.Item label={`Risk Free Rate (0 - 100) : `}>
             <InputNumber
               defaultValue={formRiskFreeRate}
               value={formRiskFreeRate}
@@ -162,7 +162,7 @@ const OptionSection = () => {
               min={0}
               max={100}
               precision={2}
-              step={0.01}
+              step={0.1}
             />
           </Form.Item>
           <Form.Item label={`Years (1 - 9) : `}>

@@ -111,25 +111,46 @@ const optionsMockupData = {
   years: 5
 }
 
-const ResultCard = () => {
+const ResultCard = props => {
   const { tickers, risk_factor, risk_free_rate, years } = optionsMockupData
+
+  const { nasdaq_index } = props.data
+  const nasdaqData = [
+    ['Return / Year', nasdaq_index.return],
+    ['Daily Return Std.', nasdaq_index.std],
+    ['Shrape Ratio', nasdaq_index.sharpe]
+  ]
+
+  const { portfolio } = props.data
+  const performanceData = [
+    ['Return / Year', portfolio.return],
+    ['Daily Return Std.', portfolio.std],
+    ['Shrape Ratio', portfolio.sharpe]
+  ]
+
   return (
     <StyledResultCard>
         <WhatToBuyHeader>What to buy</WhatToBuyHeader>
         <PerformanceHeader>Performance last {years} years</PerformanceHeader>
         <WhatToBuyContent>
-          <WhatToBuyTable data={whatToBuyMockupData} />
+          <WhatToBuyTable
+            data={portfolio.what_to_buy}
+            // data={whatToBuyMockupData}
+          />
         </WhatToBuyContent>
         <PerformanceContent>
           <PerformanceTable
-            data={performanceMockupData}
-            nasdaqData={nasdaqMockupData}
+            data={performanceData}
+            nasdaqData={nasdaqData}
+            // data={performanceMockupData}
+            // nasdaqData={nasdaqMockupData}
           />
         </PerformanceContent>
       <StyledOptions>
         <StyledOption>Tickers : {tickers}</StyledOption>
         <StyledOption>Risk factor : {risk_factor}</StyledOption> 
         <StyledOption>Risk free rate : {risk_free_rate * 100}%</StyledOption>
+        <StyledOption>Years : {years}</StyledOption>
       </StyledOptions>
     </StyledResultCard>
   )

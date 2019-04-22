@@ -28,11 +28,11 @@ const PerformanceTable = props => {
             <Value>{row[0]}</Value>
             { index < 2 ?
                 <PercentValue>{percentValue(row[1])}</PercentValue> :
-                <Value>{row[1]}</Value>
+                <Value>{row[1].toFixed(3)}</Value>
             }
             {(() => {
               const diffPercentValue = row[1] - nasdaqData[index][1]
-              const diffValue = (row[1] - nasdaqData[index][1]).toFixed(4)
+              const diffValue = (row[1] - nasdaqData[index][1]).toFixed(3)
               const plusSignDiffPercentValue = `${plusSign(diffPercentValue)}${percentValue(diffPercentValue)}`
               const plusSignDiffValue = `${plusSign(diffValue)}${diffValue}`
               if (index < 2) {

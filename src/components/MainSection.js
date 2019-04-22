@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import ResultCard from './ResultCard'
+import requestForData from '../api/requestForData'
+import simpleFetch from '../api/simpleFetch'
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,14 +33,39 @@ const StyledOptions = styled.div`
   cursor: pointer;
 `
 
+const skeletonData = {
+  nasdaq_index: {
+    return: 0,
+    std: 0,
+    sharpe: 0
+  },
+  portfolio: {
+    return: 0,
+    std: 0,
+    sharpe: 0,
+    what_to_buy: [
+      ['000', 0],
+      ['000', 0],
+      ['000', 0]
+    ]
+  }
+}
+
 const MainSection = () => {
+  const [data, setData] = useState(skeletonData)
+  useEffect(() => {
+    (async () => {
+      const result = await requestForData({})
+      setData(result)
+    })()
+  }, [])
   return (
     <>
       <Wrapper>
         <StyledMainButton>Give Me<br />Best Portfolio</StyledMainButton>
         <StyledOptions>with options</StyledOptions>
       </Wrapper>
-      <ResultCard />
+      <ResultCard data={data} />
     </>
   )
 }

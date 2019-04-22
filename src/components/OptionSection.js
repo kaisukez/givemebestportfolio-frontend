@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import {
   Form,
@@ -11,7 +11,6 @@ import ResultCard from './ResultCard'
 import requestForData from '../api/requestForData'
 import skeletonData from '../helpers/skeletonData'
 import tickers from '../helpers/tickers'
-import { breakpoints } from '../constant'
 
 const Option = Select.Option
 

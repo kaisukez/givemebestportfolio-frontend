@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
@@ -102,36 +102,36 @@ const StyledCloseButton = styled.div`
   color: black;
 `
 
-const whatToBuyMockupData = [
-  ['ABC', 0.4],
-  ['DEF', 0.3],
-  ['GHI', 0.15],
-  ['JKL', 0.07],
-  ['JKL', 0.07],
-  ['JKL', 0.07],
-  ['JKL', 0.07],
-  ['JKL', 0.07],
-  ['JKL', 0.07],
-]
+// const whatToBuyMockupData = [
+//   ['ABC', 0.4],
+//   ['DEF', 0.3],
+//   ['GHI', 0.15],
+//   ['JKL', 0.07],
+//   ['JKL', 0.07],
+//   ['JKL', 0.07],
+//   ['JKL', 0.07],
+//   ['JKL', 0.07],
+//   ['JKL', 0.07],
+// ]
 
-const performanceMockupData = [
-  ['Return / Year', 0.2514],
-  ['Daily Return Std.', 0.1374],
-  ['Shrape Ratio', 1.3894]
-]
+// const performanceMockupData = [
+//   ['Return / Year', 0.2514],
+//   ['Daily Return Std.', 0.1374],
+//   ['Shrape Ratio', 1.3894]
+// ]
 
-const nasdaqMockupData = [
-  ['Return / Year', 0.1057],
-  ['Daily Return Std.', 0.2442],
-  ['Shrape Ratio', 0.5578]
-]
+// const nasdaqMockupData = [
+//   ['Return / Year', 0.1057],
+//   ['Daily Return Std.', 0.2442],
+//   ['Shrape Ratio', 0.5578]
+// ]
 
-const optionsMockupData = {
-  tickers: 'All',
-  risk_factor: 0.5,
-  risk_free_rate: 0.025,
-  years: 5
-}
+// const optionsMockupData = {
+//   tickers: 'All',
+//   risk_factor: 0.5,
+//   risk_free_rate: 0.025,
+//   years: 5
+// }
 
 const renderTickers = tickers => {
   if (tickers === 'All')

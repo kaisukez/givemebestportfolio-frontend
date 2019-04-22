@@ -18,7 +18,7 @@ const StyledResultCard = styled.div`
   /* display: ${props => props.show ? 'grid' : 'none'}; */
 
   clip-path: ${ props => props.show ?
-    'circle(150% at top 50vh left 50vw)' :
+    'circle(120% at top 50vh left 50vw)' :
     'circle(0% at top 50vh left 50vw)'
   };
 

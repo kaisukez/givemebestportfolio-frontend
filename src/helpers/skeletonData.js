@@ -13,6 +13,12 @@ const skeletonData = {
       ['000', 0],
       ['000', 0]
     ]
+  },
+  options: {
+    tickers: 'All',
+    risk_factor: 0.5,
+    risk_free_rate: 0.025,
+    years: 5
   }
 }
 

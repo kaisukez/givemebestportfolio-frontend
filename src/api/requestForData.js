@@ -7,7 +7,7 @@ const requestForData = async (body={}) => {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
-    body: JSON.stringify({}),
+    body: JSON.stringify(body),
     // credentials: "include"
   }
   return simpleFetch(process.env.REACT_APP_BACKEND_URL, options)

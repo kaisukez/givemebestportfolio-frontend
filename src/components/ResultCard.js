@@ -1,5 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import WhatToBuyTable from './WhatToBuyTable'
 import PerformanceTable from './PerformanceTable'
@@ -12,11 +14,19 @@ const StyledResultCard = styled.div`
   height: auto;
   font-size: 1.1rem;
 
+  /* display: ${props => props.show ? 'grid' : 'none'}; */
+
+  clip-path: ${ props => props.show ?
+    'circle(100% at top 50vh left 50vw)' :
+    'circle(0% at top 50vh left 50vw)'
+  };
+
+  transition: clip-path 0.5s ease-in;
   
   @media (min-width: ${breakpoints.mobile}px) {
     grid-template-rows: auto auto auto;
     grid-template-columns: auto auto;
-  }
+  };
 `
 
 const Header = styled.div`
@@ -77,7 +87,18 @@ const StyledOptions = styled.div`
 `
 
 const StyledOption = styled.div`
-  padding:1em 0 1em 0;
+  /* padding: 1em 1.25em 1em 1.25em; */
+  padding: 1em;
+  text-align: center;
+`
+
+const StyledCloseButton = styled.div`
+  position: fixed;
+  font-size: 1.2em;
+  right: 1em;
+  top: 0.75em;
+  cursor: pointer;
+  color: black;
 `
 
 const whatToBuyMockupData = [
@@ -111,47 +132,68 @@ const optionsMockupData = {
   years: 5
 }
 
-const ResultCard = props => {
-  const { tickers, risk_factor, risk_free_rate, years } = optionsMockupData
+const renderTickers = tickers => {
+  if (tickers === 'All')
+    return tickers
+  let result = '['
+  tickers.forEach((ticker, i) => {
+    result += ticker
+    if (i < tickers.length - 1)
+      result += ', '
+  })
+  result += ']'
+  return result
+}
 
+const ResultCard = props => {
   const { nasdaq_index } = props.data
   const nasdaqData = [
     ['Return / Year', nasdaq_index.return],
     ['Daily Return Std.', nasdaq_index.std],
     ['Shrape Ratio', nasdaq_index.sharpe]
   ]
-
+  
   const { portfolio } = props.data
   const performanceData = [
     ['Return / Year', portfolio.return],
     ['Daily Return Std.', portfolio.std],
     ['Shrape Ratio', portfolio.sharpe]
   ]
+  
+  // const { tickers, risk_factor, risk_free_rate, years } = optionsMockupData
+  const { tickers, risk_factor, risk_free_rate, years } = props.data.options
+
+  const { show } = props
 
   return (
-    <StyledResultCard>
-        <WhatToBuyHeader>What to buy</WhatToBuyHeader>
-        <PerformanceHeader>Performance last {years} years</PerformanceHeader>
-        <WhatToBuyContent>
-          <WhatToBuyTable
-            data={portfolio.what_to_buy}
-            // data={whatToBuyMockupData}
-          />
-        </WhatToBuyContent>
-        <PerformanceContent>
-          <PerformanceTable
-            data={performanceData}
-            nasdaqData={nasdaqData}
-            // data={performanceMockupData}
-            // nasdaqData={nasdaqMockupData}
-          />
-        </PerformanceContent>
+    <StyledResultCard show={show}>
+      <WhatToBuyHeader>What to buy</WhatToBuyHeader>
+      <PerformanceHeader>Performance last {years} years</PerformanceHeader>
+      <WhatToBuyContent>
+        <WhatToBuyTable
+          data={portfolio.what_to_buy}
+          // data={whatToBuyMockupData}
+        />
+      </WhatToBuyContent>
+      <PerformanceContent>
+        <PerformanceTable
+          data={performanceData}
+          nasdaqData={nasdaqData}
+          // data={performanceMockupData}
+          // nasdaqData={nasdaqMockupData}
+        />
+      </PerformanceContent>
       <StyledOptions>
-        <StyledOption>Tickers : {tickers}</StyledOption>
+        <StyledOption>Tickers : {renderTickers(tickers)}</StyledOption>
         <StyledOption>Risk factor : {risk_factor}</StyledOption> 
         <StyledOption>Risk free rate : {risk_free_rate * 100}%</StyledOption>
         <StyledOption>Years : {years}</StyledOption>
       </StyledOptions>
+      <StyledCloseButton
+        onClick={() => props.close()}
+      >
+        <FontAwesomeIcon icon={faTimes} />
+      </StyledCloseButton>
     </StyledResultCard>
   )
 }

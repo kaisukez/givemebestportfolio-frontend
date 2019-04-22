@@ -35,19 +35,25 @@ const StyledOptions = styled.div`
 
 const MainSection = () => {
   const [data, setData] = useState(skeletonData)
+  const [show, setShow] = useState(false)
+
   useEffect(() => {
     (async () => {
       const result = await requestForData({})
       setData(result)
     })()
   }, [])
+
   return (
     <>
       <Wrapper>
         <StyledMainButton>Give Me<br />Best Portfolio</StyledMainButton>
         <StyledOptions>with options</StyledOptions>
       </Wrapper>
-      <ResultCard data={data} />
+      <ResultCard
+        data={data}
+        show={show}
+      />
     </>
   )
 }

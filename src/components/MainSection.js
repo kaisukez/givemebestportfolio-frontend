@@ -88,7 +88,7 @@ const MainSection = props => {
   }
 
   const handleWithOptions = () => {
-    props.history.push('/option')
+    props.history.push('/options')
   }
 
   return (

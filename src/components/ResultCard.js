@@ -18,7 +18,7 @@ const StyledResultCard = styled.div`
   /* display: ${props => props.show ? 'grid' : 'none'}; */
 
   clip-path: ${ props => props.show ?
-    'circle(100% at top 50vh left 50vw)' :
+    'circle(150% at top 50vh left 50vw)' :
     'circle(0% at top 50vh left 50vw)'
   };
 
@@ -188,7 +188,7 @@ const ResultCard = props => {
       <StyledOptions>
         <StyledOption>Tickers : {renderTickers(tickers)}</StyledOption>
         <StyledOption>Risk factor : {risk_factor}</StyledOption> 
-        <StyledOption>Risk free rate : {risk_free_rate * 100}%</StyledOption>
+        <StyledOption>Risk free rate : {(risk_free_rate * 100).toFixed(3)}%</StyledOption>
         <StyledOption>Years : {years}</StyledOption>
       </StyledOptions>
       <StyledCloseButton
